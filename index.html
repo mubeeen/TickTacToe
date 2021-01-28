@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tick Tac Toe</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./style/style.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div class="container main-container" id="play-game-container">
+        <div class="row">                                           <!--Main heading-->
+            <div class="col main-header">
+                <h1 class="text-center main-heading">Tick Tac Toe</h1>
+            </div>
+        </div>
+        <!--game score div tag-->
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="padding: .75rem; vertical-align: top; border-top: 4px solid coral;">Player X</th>
+                            <th style="padding: .75rem; vertical-align: top; border-top: 4px solid coral;">Player O</th>
+                            <th style="padding: .75rem; vertical-align: top; border-top: 4px solid coral;">Draws</th>
+                            <th style="padding: .75rem; vertical-align: top; border-top: 4px solid coral;">Remaing Matches</th>
+                            <th style="padding: .75rem; vertical-align: top; border-top: 4px solid coral;">Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                            <td id="player1" style="padding: .75rem; vertical-align: top; border-top: 1px solid coral;">0</td>
+                            <td id="player2" style="padding: .75rem; vertical-align: top; border-top: 1px solid coral;">0</td>
+                            <td id="draws" style="padding: .75rem; vertical-align: top; border-top: 1px solid coral;">0</td>
+                            <td id="rm-matches" style="padding: .75rem; vertical-align: top; border-top: 1px solid coral;">0</td>
+                            <td id="center-score" style="padding: .75rem; vertical-align: top; border-top: 1px solid coral;">Playing</td>
+                        </tr>
+                     </tbody>
+                    </table>
+            </div>
+        </div>
+        
+        <div class="row" id="game-screen">                          <!--game screen-->
+            <div class="container game-container">
+                <div class="row board-row">                                                 <!--game-row # 1 -->
+                    <div id="c1" data-columns="1" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 1-->
+                    <div id="c2" data-columns="2" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 2-->
+                    <div id="c3" data-columns="3" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 3-->
+                    <div id="c4" data-columns="4" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col -->
+                </div>
+                <div class="row">                                                           <!--game-row # 2 -->
+                    <div id="c5" data-columns="5" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 1-->
+                    <div id="c6" data-columns="6" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 2-->
+                    <div id="c7" data-columns="7" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 3-->
+                    <div id="c8" data-columns="8" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 4-->
+                </div>
+                <div class="row">                                                           <!--game-row # 3 -->
+                    <div id="c9" data-columns="9" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 1-->
+                    <div id="c10" data-columns="10" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 2-->
+                    <div id="c11" data-columns="11" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 3-->
+                    <div id="c12" data-columns="12" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 4-->
+                </div>                             
+                <div class="row">                                                           <!--game-row # 4 -->
+                    <div id="c13" data-columns="13" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 1-->
+                    <div id="c14" data-columns="14" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 2-->
+                    <div id="c15" data-columns="15" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 3-->
+                    <div id="c16" data-columns="16" class="col d-flex justify-content-center cell"><p class="player-opt">_</p></div>                             <!--row # 1 & col 4-->
+                </div>                             
+            </div>
+            </div>
+        </div>
+
+        <!--Match Winner POPUP-->
+        <div class="container result-screen" id="main-result-screen">
+            <div class="row">                                           <!--Main heading-->
+                <div class="col main-header">
+                    <h1 class="text-center main-heading">Tick Tac Toe</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                  <div class="animation-winnner">
+                    <p id="win-message">Congrtulations<br><span id="player-win"></span></p>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-success win-btn" id="win-btn">Next Match</button>
+                </div>
+            </div>
+        </div>
+
+    <!-- Winner popup -->
+
+    <!--<div class="container winner-popup-menu" id="moain-result-screen">
+        <div class="row">                                          
+            <div class="col main-header">
+                <h1 class="text-center main-heading">Tick Tac Toe</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Congratutations
+            </div>
+        </div>
+        <div class="row" style="padding: 200px;">
+            <div class="col">
+                <center><button id="play-next" type="button" class="btn btn-success" style="padding: 20px;margin-top: 20px;">Play Next match</button></center>
+            </div>
+        </div>
+    </div>
+-->
+
+    <!--Main Screen-->
+    <div class="container main-menu" id="front-main-menu">
+        <div class="row">                                           <!--Main heading-->
+            <div class="col main-header">
+                <h1 class="text-center main-heading">Tick Tac Toe</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6 style="color: red;">Rules:</h6>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor magni harum recusandae ipsam, blanditiis voluptatum tempore maxime eligendi fugiat soluta quidem non veritatis ut itaque enim tenetur iure accusantium ullam.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Select the number of matches you want to play!</label>
+                <select class="form-control form-control-lg" id="selected-matches">
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="7">7</option>
+                    <option value="11">11</option>
+                    <option value="13">13</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col">
+                <label for="exampleFormControlInput1">Enter Input</label>
+                <input type="email" class="form-control" id="FormControlInput1" placeholder="No of matches..." oninput="myFunction()">
+                <p id="valid-input-notification" style="color: red; display: none;">Enter Valid Input! Odd numbers only!</p>
+            </div>
+        </div>
+        <div class="row" style="padding: 200px;">
+            <div class="col">
+                <center><button id="lets-play" type="button" class="btn btn-success" style="padding: 20px;margin-top: 20px;" disabled>Play Game</button></center>
+            </div>
+        </div>
+    </div>
+
+    <!--Final winner screen -->
+    <div class="container" id="tournament-winnner-screen">
+        <div class="row">
+            <div class="col main-header">
+                <h1 class="text-center main-heading">Tick Tac Toe</h1>
+                <div class="animation-winnner d-flex justify-content-center"><p id="winner-ch">Tournament Winner! Player <span id="t-w"></span></p></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./Js/game-board.js"></script>
+    <script type="module" src="./Js/main.js"></script>
+    <script type="module" src="./Js/events.js"></script>
+    <script>                                                       //For Input validation purpose (Odd numbers only)
+        function myFunction(){
+            var myValue = document.getElementById("FormControlInput1").value;
+            if (!(isNaN(myValue))) {
+                if(myValue % 2 !== 0) {
+                    //button disable
+                    document.getElementById("lets-play").disabled = false; 
+                    document.getElementById("valid-input-notification").style.display = "none";
+                }
+                else {
+                    document.getElementById("lets-play").disabled = true;  
+                    document.getElementById("valid-input-notification").style.display = "block";
+                }
+            }
+            else {
+                document.getElementById("lets-play").disabled = true; 
+            }
+        }
+    </script>
+
+
+</body>
+</html>
